@@ -121,16 +121,19 @@ play = raw_input("Type 'yes' to play: ")
 print ""
 while play != "yes":
     play = raw_input("Wait, so do you want to play? Type 'yes' and press Enter: ")
-money = 100
+MAXBET = 200
+money = MAXBET
 print ""
-print "Great, you start with $100. Minimum bet is $5."
+print "Great, you start with $" + str(MAXBET) + ". Minimum bet is $5."
 input_is_correct = False
 while not input_is_correct:
     bet = raw_input("Enter your bet here: $")
     try:
         number = int(bet)
-        if number >= 5 and number <= 100:
+        if number >= 5 and number <= MAXBET:
             input_is_correct = True
+        else:
+            print "Please enter a number between 5 and 100."
     except ValueError:
         print "Please enter a number between 5 and 100."
 bet = int(bet)
@@ -220,17 +223,17 @@ while play == "yes":
         
 #Cash Out
 if play == "cash":
-    if money > 100:
+    if money > MAXBET:
         print ""
         print "Congrats! You leave with $" + str(money) + "."
-        print "That means you made $" + str((money - 100)) + "!"
+        print "That means you made $" + str((money - MAXBET)) + "!"
             
-    elif money == 100:
+    elif money == MAXBET:
         print ""
         print "Good Job! You leave with $" + str(money) + "."
         print "You broke even, meaning you didn't lose any money!"
     
-    elif money < 100:
+    elif money < MAXBET:
         print ""
         print "Oh no! You leave with $" + str(money) + "."
         print "Better luck next time!"
